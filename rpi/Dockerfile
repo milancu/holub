@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 COPY pyproject.toml ./
-RUN uv sync --no-dev --no-install-project
+RUN uv sync --no-dev --no-install-project --torch-backend cpu
 
 COPY detector.py .
 

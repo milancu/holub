@@ -333,7 +333,7 @@ wheels = [
 [[package]]
 name = "holub-detector"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "pillow" },
     { name = "requests" },
