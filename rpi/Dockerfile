@@ -1,7 +1,9 @@
 FROM python:3.11-slim AS exporter
 
 WORKDIR /export
-RUN pip install --no-cache-dir ultralytics
+RUN pip install --no-cache-dir ultralytics && \
+    pip uninstall -y opencv-python && \
+    pip install --no-cache-dir opencv-python-headless
 RUN python -c "from ultralytics import YOLO; YOLO('yolov8n.pt').export(format='onnx', imgsz=640)"
 
 FROM python:3.11-slim
