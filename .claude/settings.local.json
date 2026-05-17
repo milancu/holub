@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-CimInstance *)",
+      "PowerShell([System.IO.Ports.SerialPort]::GetPortNames\\(\\))",
+      "PowerShell(Get-Process *)",
+      "PowerShell(& \"$env:USERPROFILE\\\\.platformio\\\\packages\\\\tool-esptoolpy\\\\esptool.py\" --port COM4 --baud 115200 chip_id 2>&1)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(python C:\\\\Users\\\\phuon\\\\.platformio\\\\packages\\\\tool-esptoolpy\\\\esptool.py --port COM4 --baud 115200 chip_id 2>&1)",
+      "PowerShell(& \"$env:USERPROFILE\\\\.platformio\\\\penv\\\\Scripts\\\\python.exe\" C:\\\\Users\\\\phuon\\\\.platformio\\\\packages\\\\tool-esptoolpy\\\\esptool.py --port COM4 --baud 115200 chip_id 2>&1)",
+      "PowerShell(Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.InterfaceAlias -match 'Wi-Fi|Ethernet' } | Select-Object InterfaceAlias, IPAddress | Format-Table -AutoSize)",
+      "PowerShell(@\\(\"192.168.0.1\",\"192.168.0.14\",\"192.168.0.135\"\\) | ForEach-Object { $ip = $_; try { $r = Invoke-WebRequest -Uri \"http://${ip}/status\" -TimeoutSec 2 -ErrorAction Stop; Write-Host \"$ip -> $\\($r.Content\\)\" } catch { Write-Host \"$ip -> no response\" } })",
+      "PowerShell(1..254 | ForEach-Object -Parallel { $ip = \"192.168.0.$_\"; try { $tcp = New-Object System.Net.Sockets.TcpClient; $result = $tcp.BeginConnect\\($ip, 80, $null, $null\\); $wait = $result.AsyncWaitHandle.WaitOne\\(200\\); if \\($wait -and $tcp.Connected\\) { Write-Output \"$ip :80 OPEN\" }; $tcp.Close\\(\\) } catch {} } -ThrottleLimit 50)",
+      "PowerShell(@\\(\"192.168.0.80\",\"192.168.0.96\"\\) | ForEach-Object { $ip = $_; try { $r = Invoke-WebRequest -Uri \"http://${ip}/status\" -TimeoutSec 3 -ErrorAction Stop; Write-Host \"$ip -> $\\($r.Content\\)\" } catch { Write-Host \"$ip -> no /status \\($\\($_.Exception.Message\\)\\)\" } })",
+      "Bash(pio run *)"
+    ]
+  }
+}

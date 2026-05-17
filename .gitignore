@@ -1,0 +1,22 @@
+# IDE
+.vscode/
+.idea/
+cmake-build-*/
+
+# ESP32 — PlatformIO
+.pio/
+esp32/include/config.h
+
+# Build artefakty
+*.bin
+*.elf
+*.map
+
+# Python / RPi
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.pt
+*.onnx
+.python-version
