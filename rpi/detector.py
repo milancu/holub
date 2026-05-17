@@ -1,3 +1,4 @@
+import os
 import time
 import requests
 import numpy as np
@@ -5,7 +6,7 @@ import onnxruntime as ort
 from io import BytesIO
 from PIL import Image
 
-ESP32_URL = "http://holub.local"
+ESP32_URL = os.environ.get("ESP32_URL", "http://holub.local")
 SNAPSHOT_ENDPOINT = f"{ESP32_URL}/snapshot"
 SPRAY_ENDPOINT = f"{ESP32_URL}/spray"
 
